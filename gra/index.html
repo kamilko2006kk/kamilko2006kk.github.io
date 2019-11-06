@@ -5,6 +5,7 @@
  	  margin:0px;
  padding:0px;
  border:0px;
+ float: left;
  }
  .game{
  color:white;
@@ -18,11 +19,38 @@
  margin:0px;
  padding:0px;
  border:0px;
+ overflow:hidden;
+ 
  }
+  .gameb{
+ color:white;
+ background-color:black;
+ height:100vh;
+ width:100vw;
+ top:0px;
+ bottom:0px;
+ left:0px;
+ right:0px;
+ margin:0px;
+ padding:0px;
+ border:0px;
+ overflow:hidden;
+ }
+
  </style>
  <script>
-  function setconsolevisiblity()
+ var consvi = true;
+  function setconsolevisiblity(a)
    {
+   if(a==true){
+   	   document.getElementById('konsola').style.display = 'none';
+	   document.getElementById('gra').style.display = 'block';
+	   consvi = true;
+   }else{
+   document.getElementById('konsola').style.display = 'block';
+   document.getElementById('gra').style.display = 'none';
+   }
+
    }
    function clear(){
    
@@ -31,12 +59,23 @@
    
    }
  </script>
+ <script>
+ var firstun=false;
+ if(firstrun==0){
+ setconsolevisiblity(0);
 
+ 	 firstrun=1;
+ }
+ </script>
 
   </head>
  <body>
- <div id="game" class="game">
- <h1>test</h1>
+ <div id="konsola" class="game">
+ <h1>konsola</h1>
+
+ </div>
+  <div id="gra" class="gameb">
+ <h1>gra</h1>
 
  </div>
   </body>
