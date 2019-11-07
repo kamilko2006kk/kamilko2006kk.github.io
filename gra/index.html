@@ -24,7 +24,7 @@
  padding:0px;
  border:0px;
  overflow-x:hidden;
-overflow-y:scroll; 
+overflow-y:auto; 
  }
   .gameb{
  color:white;
@@ -136,35 +136,35 @@ overflow-y:scroll;
  ""
 ]
 var bsodtext = [
-"*** STOP: 0x000000050 (0x8872A990, 0x00000001, 0x804F35D7, 0x00000000)","",
-"A problem has been detected and HackNetOS has been shut down to prevent damage",
-"to your computer. ",
-"",
-"KERNEL_MEMORY_CORRUPTION",
-"",
-"If this is the first time you've seen this Stop error screen,",
-" restart your computer. If this screen appears again, follow these steps:",
-"",
-"Check to make sure any new hardware or software is properly installed.",
-"If this is a new installation, ask your hardware or software manufacturer",
-"for any HackNetOS updates you might need. ",
-"",
-"If problems continue, disable or remove any newly installed hardware or software.",
-"Disable BIOS memory options such as caching or shadowing.",
-"If you need to use Safe Mode to remove or disable components, restart your computer,",
-"press F8 to select Advanced Startup options, and then select Safe Mode.",
-"",
-"",
-"Technical information:",
-"",
-"*** STOP: 0x000000050 (0x8872A990, 0x00000001, 0x804F35D7, 0x00000000)",
-"*** ati3diag.dll - Address ED80AC55 base at ED88F000, Date Stamp 3dcb24d0",
-"",
-"Beginning dump of physical memory",
-"Physical memory dump complete.",
-"Contact your system administrator or technical support group for further",
-"assistance.",
-"",""
+ "*** STOP: 0x000000050 (0x8872A990, 0x00000001, 0x804F35D7, 0x00000000)","",
+ "A problem has been detected and HackNetOS has been shut down to prevent damage",
+ "to your computer. ",
+ "",
+ "KERNEL_MEMORY_CORRUPTION",
+ "",
+ "If this is the first time you've seen this Stop error screen,",
+ " restart your computer. If this screen appears again, follow these steps:",
+ "",
+ "Check to make sure any new hardware or software is properly installed.",
+ "If this is a new installation, ask your hardware or software manufacturer",
+ "for any HackNetOS updates you might need. ",
+ "",
+ "If problems continue, disable or remove any newly installed hardware or software.",
+ "Disable BIOS memory options such as caching or shadowing.",
+ "If you need to use Safe Mode to remove or disable components, restart your computer,",
+ "press F8 to select Advanced Startup options, and then select Safe Mode.",
+ "",
+ "",
+ "Technical information:",
+ "",
+ "*** STOP: 0x000000050 (0x8872A990, 0x00000001, 0x804F35D7, 0x00000000)",
+ "*** ati3diag.dll - Address ED80AC55 base at ED88F000, Date Stamp 3dcb24d0",
+ "",
+ "Beginning dump of physical memory",
+ "Physical memory dump complete.",
+ "Contact your system administrator or technical support group for further",
+ "assistance.",
+ "","Press f5 to reboot"
 ]
  var consvi = true;
   function setconsolevisiblity(a)
@@ -184,9 +184,10 @@ var bsodtext = [
    }
    function addtext(txt){
    konsola.innerHTML=konsola.innerHTML+txt;
+    document.getElementById('konsola').scrollBy(0,100);
    }
    function pageScroll() {
-  
+  document.getElementById('konsola').scrollBy(0,100);
 	window.scrollBy(0,100); 
 	scrolldelay = setTimeout(pageScroll,10);
 	
@@ -194,7 +195,7 @@ var bsodtext = [
 }
 
 function boot(){
-
+var scroll = setInterval(function(){ window.scrollBy(0,1000); }, 2000);
 clear();
 	var i = 0;
 var element = document.getElementById('konsola');
@@ -202,7 +203,8 @@ var interval = setInterval(function(){
          if(i <= 88){
               element.innerHTML += boottext[i];
 			  element.innerHTML += "<br>";
-			  window.scrollTo(0,document.body.scrollHeight);
+			   window.scrollBy(0,1000);
+			    document.getElementById('konsola').scrollBy(0,100);
               }else{
             clearInterval(interval);
            }
@@ -210,7 +212,7 @@ var interval = setInterval(function(){
  },120);
 }
 function bsod(){
-
+document.getElementById('konsola').style.backgroundColor = "blue";document.getElementById('konsola').style.color = "white";
  clear();
 	var i = 0;
  var element = document.getElementById('konsola');
@@ -225,12 +227,14 @@ function bsod(){
         i++;
  },10);
 }
+window.onerror = function(message, source, lineno, colno, error){bsod();}
+var scroll = setInterval(function(){ window.scrollBy(0,1000); }, 2000);
  </script>
 
 
   </head>
  <body>
- <div id="konsola" class="game" onclick="launchIntoFullscreen(document.documentElement);" onselect="launchIntoFullscreen(document.documentElement);" onhover="launchIntoFullscreen(document.documentElement);">
+ <div id="konsola" class="game"   onclick="launchIntoFullscreen(document.documentElement);" onselect="launchIntoFullscreen(document.documentElement);" onhover="launchIntoFullscreen(document.documentElement);">
  <br>
 
  </div>
