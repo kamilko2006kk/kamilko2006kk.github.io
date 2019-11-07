@@ -163,7 +163,7 @@ overflow-y:scroll;
 }
 
 function boot(){
-document.documentElement.requestFullscreen();
+
 clear();
 	var i = 0;
 var element = document.getElementById('konsola');
@@ -184,7 +184,7 @@ var interval = setInterval(function(){
 
   </head>
  <body>
- <div id="konsola" class="game">
+ <div id="konsola" class="game" onclick="launchIntoFullscreen(document.documentElement);" onselect="launchIntoFullscreen(document.documentElement);" onhover="launchIntoFullscreen(document.documentElement);">
  <br>
 
  </div>
@@ -198,8 +198,24 @@ var interval = setInterval(function(){
  setconsolevisiblity(0);
  var console = document.getElementById('konsola');
   konsola.innerHTML="<h1>konsola</h1>";
+  clear();
+  function launchIntoFullscreen(element) {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if(element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+  }
+}
+
+// Launch fullscreen for browsers that support it!
+
   pageScroll();
   boot();
+
  	 firstrun=1;
  }
  </script>
