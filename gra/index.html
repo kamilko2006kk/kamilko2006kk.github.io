@@ -43,6 +43,7 @@ overflow-y:auto;
 
  </style>
  <script>
+   var bsoded = false;
  var boottext=
 [
  "PMAP: PCID enabled",
@@ -199,10 +200,11 @@ var scroll = setInterval(function(){ window.scrollBy(0,1000); }, 2000);
 clear();
 	var i = 0;
 var element = document.getElementById('konsola');
+if(bsoded == false){
 var interval = setInterval(function(){
          if(i <= 88){
-              element.innerHTML += boottext[i];
-			  element.innerHTML += "<br>";
+          if(bsoded == false) element.innerHTML += "<div class=\"a\">"+boottext[i]+"</div>";
+          if(bsoded == false) element.innerHTML += "<br>\n";
 			   window.scrollBy(0,1000);
 			    document.getElementById('konsola').scrollBy(0,100);
               }else{
@@ -210,8 +212,9 @@ var interval = setInterval(function(){
            }
         i++;
  },120);
-}
+}}
 function bsod(){
+  bsoded = true;
 document.getElementById('konsola').style.backgroundColor = "blue";document.getElementById('konsola').style.color = "white";
  clear();
 	var i = 0;
