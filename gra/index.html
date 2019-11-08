@@ -215,7 +215,8 @@ var interval = setInterval(function(){
 }}
 function bsod(){
   bsoded = true;
-document.getElementById('konsola').style.backgroundColor = "blue";document.getElementById('konsola').style.color = "white";
+document.getElementById('konsola').style.backgroundColor = "blue";
+document.getElementById('konsola').style.color = "white";
  clear();
 	var i = 0;
  var element = document.getElementById('konsola');
@@ -237,7 +238,9 @@ var scroll = setInterval(function(){ window.scrollBy(0,1000); }, 2000);
 
   </head>
  <body>
- <div id="konsola" class="game"   onclick="launchIntoFullscreen(document.documentElement);" onselect="launchIntoFullscreen(document.documentElement);" onhover="launchIntoFullscreen(document.documentElement);">
+ <div id="konsola" class="game"   onclick="launchIntoFullscreen(document.documentElement);" 
+ onselect="launchIntoFullscreen(document.documentElement);"
+  onhover="launchIntoFullscreen(document.documentElement);">
  <br>
 
  </div>
